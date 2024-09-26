@@ -7,7 +7,6 @@ Created on Wed Sep 25 22:05:03 2024
 
 text = 'Assalomu alaykum'
 shift = 3
-
 def caesar(message, offset):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     encrypted_text = ''
