@@ -39,7 +39,7 @@ Created on Wed Sep 25 23:04:12 2024
 
 
 
-# Updated version cipher above
+# Updated version of Vigenere cipher
 text = 'mrttaqrhknsw ih puggrur'
 custom_key = 'happycoding'
 
