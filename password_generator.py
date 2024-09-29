@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
+# Bismillah
 """
 Created on Sun Sep 29 17:24:22 2024
 
-@author: asus
+@author: Faxriddin
 """
 
 import secrets
@@ -16,5 +16,6 @@ symbols = string.punctuation
 
 # Combine all characters
 all_characters = letters + digits + symbols
-print(all_characters)
-print(secrets.choice(all_characters))
+
+# print(all_characters)
+# print(secrets.choice(all_characters))
