@@ -12,4 +12,5 @@ for x in a:
     if x in b:
         commonsList.append(x)
 
-print(set(commonsList))
+commonsList = set(commonsList)
+print(commonsList)
