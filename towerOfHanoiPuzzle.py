@@ -58,7 +58,7 @@ move(NUMBER_OF_DISKS, 'A', 'B', 'C')
 
 
 
-# Final product, done using Recursion
+# Final product, done it by using Recursion
 NUMBER_OF_DISKS = 5
 A = list(range(NUMBER_OF_DISKS, 0, -1))
 B = []
