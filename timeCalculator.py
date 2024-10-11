@@ -46,21 +46,21 @@ def add_time(start, duration, day_of_week=None):
         period = "PM"
         display_hour = new_hour - 12
 
-   
+    # Calculate the new day if day_of_week is provided
     if day_of_week:
         day_of_week = day_of_week.capitalize()
         day_index = days_of_week.index(day_of_week)
         new_day_index = (day_index + days_later) % 7
         new_day = days_of_week[new_day_index]
     
-
+    # Prepare the final time string
     new_time = f"{display_hour}:{new_minute:02d} {period}"
 
-
+    # Add the day of the week to the output if provided
     if day_of_week:
         new_time += f", {new_day}"
 
-
+    # Add the days later to the output if applicable
     if days_later == 1:
         new_time += " (next day)"
     elif days_later > 1:
@@ -68,6 +68,7 @@ def add_time(start, duration, day_of_week=None):
 
     return new_time
 
+# Example usage:
 print(add_time("3:00 PM", "3:10"))
 print(add_time("11:30 AM", "2:32", "Monday"))
 print(add_time("11:43 AM", "00:20"))
