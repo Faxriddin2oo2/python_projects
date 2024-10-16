@@ -39,4 +39,4 @@ class Solution():
         return fib_sequence
     
 solution = Solution()
-print(solution.fibonacci(5))
+print(solution.fibonacci(30))
