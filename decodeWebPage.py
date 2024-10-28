@@ -13,7 +13,7 @@ r = requests.get(base_url)
 soup = BeautifulSoup(r.text, features="lxml")
  
 
-for story_heading in soup.find_all(class_="story-heading"): 
+for story_heading in soup.find_all(class_="summary-class"): 
     if story_heading.a: 
         print(story_heading.a.text.replace("\n", " ").strip())
     else: 
