@@ -35,11 +35,14 @@ def getDataFromPdf(path_to_pdf):
     
     return data
 
-def writeToJson(data, json_file):
-    f = open(json_file, 'w', encoding='utf-8')
-    json.dump(data, f, ensure_ascii=False, indent=4)
+def writeToJson(struct, json_file):
+    f = open(json_file, 'w')
+    json.dump(struct, f, ensure_ascii=False, indent=4)
     f.close()
 
+
+
+# Example
 file_pdf = "file.pdf"
 json_file = "structure.json"
 
