@@ -20,3 +20,9 @@ for story_heading in soup.find_all(class_="summary-class"):
         print(story_heading.contents[0].strip())
         
 
+
+
+
+
+
+
