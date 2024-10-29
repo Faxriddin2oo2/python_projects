@@ -1,36 +1,48 @@
 import fitz
 import json
 
-
 def getDataFromPdf(path_to_pdf):
     pdf = fitz.open(path_to_pdf)
     content = pdf.get_toc() # Служит для извлечения оглавлений
-    data = {} # Основной словарь
     
+    data = {} # Основной словарь
+    chapter_counter = 0
+    section_counter = 0
+
     for i in content:
-        if i[0] == 1:
-            title = i[1]
-            data[title] = {}
-        if i[0] == 2:
-            chapter = i[1]
-            data[title][chapter] = {}
-        if i[0] == 3:
-            subsection = i[1]
-            data[title][chapter][subsection] = i[2]
+        level, name, page = i
+        
+        if level == 1:
+            chapter_counter += 1
+            section_counter = 0
+            data[str(chapter_counter)] = {
+                "title": name,
+                "sections": {}
+            }
+        
+        elif level == 2:
+            section_counter += 1
+            data[str(chapter_counter)]["sections"][str(section_counter)] = {
+                "title": name,
+                "subsections": {}
+            }
+        
+        elif level == 3:
+            data[str(chapter_counter)]["sections"][str(section_counter)]["subsections"][name] = {
+                "title": name,
+                "page": page
+            }
+    
     return data
 
-def writeToJson(struct, json_file):
-    f = open(json_file, 'w')
-    json.dump(struct, f, ensure_ascii=False, indent=4)
+def writeToJson(data, json_file):
+    f = open(json_file, 'w', encoding='utf-8')
+    json.dump(data, f, ensure_ascii=False, indent=4)
     f.close()
 
-
-# Example
 file_pdf = "file.pdf"
-json_file = "structure.json"            
+json_file = "structure.json"
 
 structure = getDataFromPdf(file_pdf)
 writeToJson(structure, json_file)
-    
-    
 
