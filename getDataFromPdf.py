@@ -3,14 +3,14 @@ import json
 
 def getDataFromPdf(path_to_pdf):
     pdf = fitz.open(path_to_pdf)
-    content = pdf.get_toc()
+    content = pdf.get_toc() # Служит для извлечения оглавлений
     
-    data = {}
+    data = {}  # Основной словарь
     chapter_counter = 0
     section_counter = 0
 
     for i in content:
-        level, name, page = i
+        level, name, _ = i  
         
         if level == 1:
             chapter_counter += 1
@@ -32,8 +32,7 @@ def getDataFromPdf(path_to_pdf):
             subsection_counter = len(data[str(chapter_counter)]["sections"][section_number]["subsections"]) + 1
             subsection_number = f"{section_number}.{subsection_counter}"
             data[str(chapter_counter)]["sections"][section_number]["subsections"][subsection_number] = {
-                "title": name,
-                "page": page
+                "title": name
             }
 
     return data
@@ -44,12 +43,8 @@ def writeToJson(struct, json_file):
 
 # Example usage
 file_pdf = "file.pdf"
-json_file = "structure.json"
+json_file = "structure1.json"
 
 structure = getDataFromPdf(file_pdf)
 writeToJson(structure, json_file)
-
-
-
-
 
